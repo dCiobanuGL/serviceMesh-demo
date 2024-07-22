@@ -1,0 +1,21 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: callme-allow-mtls-only
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: callme-service
+  mtls:
+    mode: STRICT
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: callme-service-mtls
+spec:
+  host: callme-service
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

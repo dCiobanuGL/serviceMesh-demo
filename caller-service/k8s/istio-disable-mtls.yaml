@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: callme-service-destination
+  namespace: default
+spec:
+  host: caller-service
+  trafficPolicy:
+    tls:
+      mode: DISABLE

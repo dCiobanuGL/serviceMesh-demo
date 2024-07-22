@@ -1,0 +1,23 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+metadata:
+  name: caller-service
+build:
+  artifacts:
+    - image: mdenisgl/caller-service
+      jib:
+        args:
+          - -Pjib
+          - -Dimage=mdenisgl/caller-service
+          - -DskipTests
+  tagPolicy:
+    gitCommit: {}
+manifests:
+  rawYaml:
+    - k8s/istio-rules.yaml
+    - k8s/deployment.yaml
+#    - k8s/istio-mtls.yaml
+portForward:
+  - resourceType: deployment
+    resourceName: caller-service
+    port: 8080

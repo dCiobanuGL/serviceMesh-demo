@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: caller-allow-mtls-only
+  namespace: default
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: caller-service-mtls
+spec:
+  host: caller-service
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

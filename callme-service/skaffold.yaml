@@ -1,0 +1,29 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+build:
+  artifacts:
+  - image: mdenisgl/callme-service
+    jib:
+      args:
+        - -Pjib
+        - -DskipTests
+  tagPolicy:
+    gitCommit: {}
+manifests:
+  rawYaml:
+    - k8s/deployment-versions.yaml
+    - k8s/istio-rules.yaml
+#    - k8s/istio-security.yaml
+#    - k8s/istio-mtls.yaml
+#    - k8s/istio-*.yaml
+profiles:
+  - name: blue
+    manifests:
+      rawYaml:
+        - k8s/deployment-versions.yaml
+        - k8s/istio-rules.yaml
+  - name: green
+    manifests:
+      rawYaml:
+        - k8s/deployment-versions.yaml
+        - k8s/istio-rules.yaml
