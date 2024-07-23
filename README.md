@@ -1,4 +1,5 @@
 Tooluri folosite:
+
 	Prima oara trebuie ca un cluster de k8s sa ruleze (eu am folosit docker desktop). Namespace-ul folosit e cel default.
 	Am folosit skaffold pt deploy-ul aplicatiei in cluster (https://skaffold.dev/docs/install/)
 	Pentru impachetarea aplicatiei intr-un container am folosit Jib. (pt Jib e adaugata dependinta in pom.xml)
@@ -7,12 +8,14 @@ Tooluri folosite:
 	Optional - tool de vizualizare (kiali)
 
 Flow-ul aplicatiei:
+
 	Sunt doua aplicatii:
 		callme - o aplicatie care raspunde la calluri
 		caller - aplicatia care este apelata (folosind postman) si apeleaza mai departe API-ul din callme
 	Folosind postman apelezi metode din caller-service (ex: localhost:8080/caller/ping) si vei primi un raspuns text conform API-ului din callme-service
 
 Pasi:
+
 1. Cluster de k8s ruleaza.
 2. istioctl manifest apply --set profile=demo (seteaza profilul demo pt istio; profil utilizat in medii de dev/testare, nu productie).
 3. kubectl label namespace default istio-injection=enabled (pt fiecare pod o sa se injecteze automat un Envoy proxy)
@@ -22,6 +25,7 @@ Pasi:
    skaffold dev --port-forward (deploy la caller)
 
 Fisiere folosite:
+
 	callme-service/k8s:
 		deployment: creeaza Deployment + Service (tine de kubernetes)'
 		deployment: creeaza doua instante de Deployment (v1 si v2) + Service (tine de kubernetes)
@@ -36,6 +40,7 @@ Fisiere folosite:
 	Fisierele din caller-service se supun aceleiasi logici.
 	
 Comenzi utile:
+
 	istioctl manifest apply --set profile=default --set meshConfig.accessLogFile="/dev/stdout" - mareste nivelul de logging	
 	kubectl get deployments
 	kubectl get pods
