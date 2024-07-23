@@ -1,4 +1,5 @@
 Useful links:
+
 	https://www.baeldung.com/ops/istio-service-mesh
  	https://piotrminkowski.com/2020/02/14/local-java-development-on-kubernetes/
   	https://piotrminkowski.com/2020/06/01/service-mesh-on-kubernetes-with-istio-and-spring-boot/
