@@ -1,3 +1,9 @@
+Useful links:
+	https://www.baeldung.com/ops/istio-service-mesh
+ 	https://piotrminkowski.com/2020/02/14/local-java-development-on-kubernetes/
+  	https://piotrminkowski.com/2020/06/01/service-mesh-on-kubernetes-with-istio-and-spring-boot/
+   	https://piotrminkowski.com/2020/06/03/circuit-breaker-and-retries-on-kubernetes-with-istio-and-spring-boot/
+
 Tooluri folosite:
 
 	Prima oara trebuie ca un cluster de k8s sa ruleze (eu am folosit docker desktop). Namespace-ul folosit e cel default.
